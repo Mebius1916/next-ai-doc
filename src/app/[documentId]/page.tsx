@@ -23,7 +23,7 @@ const page = async ({ params }: DocumentIdPageProps) => {
     { id: documentId as Id<"documents"> },
     { token }
   );
-  
+
   if (!preloadedDocument) {
     throw new Error("Document not found");
   }

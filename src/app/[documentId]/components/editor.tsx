@@ -17,8 +17,8 @@ import { Color } from "@tiptap/extension-color";
 import Link from "@tiptap/extension-link";
 import { Highlight } from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
-// import { FontSizeExtension } from "@/extensions/font-size";
-// import { LineHeightExtension } from "@/extensions/line-height";
+import { FontSizeExtension } from "@/extensions/font-size";
+import { LineHeightExtension } from "@/extensions/line-height";
 // import { Ruler } from "./ruler";
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 // import { Threads } from "./threads";
@@ -86,7 +86,7 @@ export const Editor = ({ initialContent }: EditorProps) => {
     //   },
     // },
     extensions: [
-      // FontSizeExtension, //自定义字体大小扩展
+      FontSizeExtension, //自定义字体大小扩展
       StarterKit.configure({
         history: false, //禁用以防止协同冲突
       }),
@@ -102,9 +102,9 @@ export const Editor = ({ initialContent }: EditorProps) => {
         defaultProtocol: "https", //链接走https协议
       }),
       TextStyle,
-      // LineHeightExtension.configure({
-      //   types: ["paragraph", "heading"],
-      // }),
+      LineHeightExtension.configure({
+        types: ["paragraph", "heading"],
+      }),
       Table,
       Image,
       ImageResize,
