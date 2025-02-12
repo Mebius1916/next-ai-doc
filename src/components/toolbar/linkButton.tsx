@@ -12,6 +12,7 @@ import {
 export const LinkButton = () => {
   const { editor } = useEditorStore();
   const [value, setValue] = useState("");
+  //给选中文本设置链接属性
   const onChange = (href: string) => {
     editor?.chain().focus().extendMarkRange("link").setLink({ href }).run();
     setValue("");
@@ -19,6 +20,7 @@ export const LinkButton = () => {
   return (
     <div className="flex flex-col items-center justify-center">
       <DropdownMenu
+        //下拉菜单时提取当前所选文本的链接属性
         onOpenChange={(open) => {
           if (open) {
             setValue(editor?.getAttributes("link").href || "");
@@ -39,6 +41,7 @@ export const LinkButton = () => {
             value={value}
             onChange={(e) => setValue(e.target.value)}
           />
+          {/* 点击后触发默认事件关闭下拉菜单 */}
           <Button onClick={() => onChange(value)}>Apply</Button>
         </DropdownMenuContent>
       </DropdownMenu>

@@ -1,10 +1,10 @@
 "use client";
+import { api } from "../../../../convex/_generated/api";
 import { Editor } from "./editor";
 // import { Toolbar } from "./toolbar";
 // import { Navbar } from "./narbar";
 // import { Room } from "./room";
 import { Preloaded, usePreloadedQuery } from "convex/react";
-import { api } from "../../../../convex/_generated/api";
 
 interface DocumentProps {
   preloadedDocument: Preloaded<typeof api.documents.getById>;

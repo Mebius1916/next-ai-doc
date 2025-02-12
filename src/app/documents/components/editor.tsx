@@ -23,6 +23,7 @@ import { LineHeightExtension } from "@/extensions/line-height";
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 // import { Threads } from "./threads";
 import { useStorage } from "@liveblocks/react";
+import { ImageButton } from "@/components/toolbar/imageButton";
 // import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margin";
 interface EditorProps {
   initialContent?: string | undefined;
@@ -106,8 +107,12 @@ export const Editor = ({ initialContent }: EditorProps) => {
         types: ["paragraph", "heading"],
       }),
       Table,
-      Image,
-      ImageResize,
+      Image.configure({
+        allowBase64: true,  // 允许外部URL
+        HTMLAttributes: {
+          class: "uploaded-image",
+        },
+      }),
       TableRow,
       TableCell,
       TableHeader,
@@ -125,6 +130,7 @@ export const Editor = ({ initialContent }: EditorProps) => {
     <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:p-0 print:bg-white print:overflow-visible">
       {/* <Ruler /> */}
       <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
+       <ImageButton/>
         <EditorContent editor={editor} />
         {/* <Threads editor={editor} /> */}
       </div>
