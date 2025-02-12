@@ -1,7 +1,4 @@
-import {
-  MinusIcon,
-  PlusIcon,
-} from "lucide-react";
+import { MinusIcon, PlusIcon } from "lucide-react";
 import { useEditorStore } from "@/store/use-editor-store";
 import { useState, useEffect } from "react";
 
@@ -16,16 +13,18 @@ export const FontSizeButton = () => {
   const [isEditing, setIsEditing] = useState(false);
 
   const updateFontSize = (newSize: string) => {
-    const size = parseInt(newSize);// 将字符串转换为数字
-    //状态更新
+    const size = parseInt(newSize); // 将字符串转换为数字
     if (!isNaN(size) && size > 0) {
+      //应用层更新
       editor?.chain().focus().setFontSize(`${size}px`).run();
+      //UI层状态更新
       setFontSize(newSize);
       setInputValue(newSize);
       setIsEditing(false);
     }
   };
-
+  
+  //用于显示当前选中文本的字体大小
   useEffect(() => {
     const update = () => {
       const current = editor?.getAttributes("textStyle").fontSize || "16px";
@@ -34,7 +33,6 @@ export const FontSizeButton = () => {
       setInputValue(newFontSize);
       setIsEditing(false);
     };
-
     //订阅tiptap的selectionUpdate事件
     editor?.on("selectionUpdate", update);
     // 返回一个清理函数，用于在组件卸载时取消订阅
@@ -62,10 +60,13 @@ export const FontSizeButton = () => {
     }
   };
 
+  //字号减
   const increment = () => {
     const newSize = parseInt(fontSize) + 1;
     updateFontSize(newSize.toString());
   };
+
+  //字号加
   const decrement = () => {
     const newSize = parseInt(fontSize) - 1;
     updateFontSize(newSize.toString());
@@ -87,9 +88,9 @@ export const FontSizeButton = () => {
         <input
           type="text"
           value={inputValue}
-          onChange={handleInputChange}
-          onBlur={handleInputBlur}
-          onKeyDown={handleKeyDown}
+          onChange={handleInputChange} //编辑中保存
+          onBlur={handleInputBlur} //失去焦点后保存
+          onKeyDown={handleKeyDown} //回车保存
           className="border border-neutral-400 text-center h-7 w-10 rounded-sm bg-transparent focus:outline-none focus:ring-0"
         />
       ) : (
