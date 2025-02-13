@@ -27,12 +27,12 @@ export default function RootLayout({
       <body
         className={inter.className}
       >
-        {/* <NuqsAdapter> */}
+        <NuqsAdapter>
           <ConvexClientProvider>
             <Toaster />
             {children}
           </ConvexClientProvider>
-        {/* </NuqsAdapter> */}
+        </NuqsAdapter>
       </body>
     </html>
   );

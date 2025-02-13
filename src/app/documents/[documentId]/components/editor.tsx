@@ -107,12 +107,8 @@ export const Editor = ({ initialContent }: EditorProps) => {
         types: ["paragraph", "heading"],
       }),
       Table,
-      Image.configure({
-        allowBase64: true,  // 允许外部URL
-        HTMLAttributes: {
-          class: "uploaded-image",
-        },
-      }),
+      Image,
+      ImageResize,
       TableRow,
       TableCell,
       TableHeader,

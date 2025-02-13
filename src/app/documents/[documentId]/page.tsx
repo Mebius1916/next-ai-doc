@@ -1,5 +1,5 @@
 import React from "react";
-import { Document } from "../components/document";
+import { Document } from "./components/document";
 import { preloadQuery } from "convex/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import { api } from "../../../../convex/_generated/api";
