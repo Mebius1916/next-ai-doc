@@ -4,7 +4,6 @@ import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { Button } from "@/components/ui/button";
-
 const ChatDialog = () => {
   const [messages, setMessages] = useState([
     { role: "assistant", content: "你好，需要帮助吗？" },
@@ -153,10 +152,14 @@ const ChatDialog = () => {
               </div>
             ) : (
               <div className="flex gap-4">
-                <div>
-                  <img src="/images/logo.png" alt="logo" />
+                <div className="flex items-center justify-center fixed">
+                  <img
+                    src="/deepseek-color.svg"
+                    alt="logo"
+                    className="h-8 w-8"
+                  />
                 </div>
-                <div className="pt-1">
+                <div className="pt-1 pl-10">
                   <ReactMarkdown
                     components={{
                       code({
@@ -202,7 +205,7 @@ const ChatDialog = () => {
           type="text"
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          onKeyPress={(e) => e.key === "Enter" && handleSend()}
+          onKeyDown={(e) => e.key === "Enter" && handleSend()}
           className="flex-1 h-12 p-4 border border-gray-300 rounded-l-lg focus:outline-none"
           placeholder="给AI发送消息...."
         />
