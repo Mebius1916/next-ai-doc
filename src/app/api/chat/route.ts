@@ -36,7 +36,7 @@ export async function POST(request: Request) {
   const { messages, model } = await request.json();
   const openai = new OpenAI({
     baseURL: "https://api.055ai.cn/v1/",
-    apiKey: "BHfl80QMUvmqmrmssk4FfuJngUxpuNuxgo2bix45mVSjsljJ",
+    apiKey: process.env.DEEP_SEEK_API_KEY,
   });
 
   try {

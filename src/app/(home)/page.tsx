@@ -1,8 +1,10 @@
 import React from 'react'
-
+import ChatDialog  from '../ai-assistant/page' 
 const page = () => {
   return (
-    <div>page</div>
+    <div>
+      <ChatDialog />
+    </div>
   )
 }
 
