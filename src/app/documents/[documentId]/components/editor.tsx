@@ -25,6 +25,7 @@ import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 import { useStorage } from "@liveblocks/react";
 import { ImageButton } from "@/components/toolbar/imageButton";
 // import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/constants/margin";
+
 interface EditorProps {
   initialContent?: string | undefined;
 }
@@ -36,10 +37,10 @@ export const Editor = ({ initialContent }: EditorProps) => {
   // const rightMargin = useStorage(
   //   (root: { rightMargin?: number }) => root.rightMargin ?? RIGHT_MARGIN_DEFAULT
   // );
-  // const liveblocks = useLiveblocksExtension({
-  //   initialContent,
-  //   offlineSupport_experimental: true,//离线支持
-  // });
+  const liveblocks = useLiveblocksExtension({
+    initialContent,
+    offlineSupport_experimental: true,//离线支持
+  });
   const { setEditor } = useEditorStore();
   const editor = useEditor({
     immediatelyRender: false, //不立即渲染
@@ -91,7 +92,7 @@ export const Editor = ({ initialContent }: EditorProps) => {
       StarterKit.configure({
         history: false, //禁用以防止协同冲突
       }),
-      // liveblocks,
+      liveblocks,
       Underline,
       Highlight.configure({
         multicolor: true,
@@ -126,7 +127,6 @@ export const Editor = ({ initialContent }: EditorProps) => {
     <div className="size-full overflow-x-auto bg-[#F9FBFD] px-4 print:p-0 print:bg-white print:overflow-visible">
       {/* <Ruler /> */}
       <div className="min-w-max flex justify-center w-[816px] py-4 print:py-0 mx-auto print:w-full print:min-w-0">
-       <ImageButton/>
         <EditorContent editor={editor} />
         {/* <Threads editor={editor} /> */}
       </div>

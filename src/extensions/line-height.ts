@@ -20,7 +20,7 @@ export const LineHeightExtension = Extension.create({
     return {
       types: ["paragraph", "heading"], // 应用行高样式的节点类型
       defaultLineHeight: null // 默认行高（null表示不设置）
-    };
+    }
   },
 
   // 添加全局属性处理
