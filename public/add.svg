@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg 
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 210 297"  
+  width="210mm" 
+  height="297mm"
+>
+  <!-- 白色背景 -->
+  <rect width="100%" height="100%" fill="white"/>
+  
+  <!-- 紫蓝色加号 -->
+  <g transform="translate(105 148.5)">  <!-- 居中定位 -->
+    <!-- 水平线 -->
+    <path 
+      d="M-40 0 H40" 
+      stroke="#9D55F9"  
+      stroke-width="10"
+      stroke-linecap="round"
+      paint-order="stroke"
+    />
+    <!-- 垂直线 -->
+    <path 
+      d="M0 -40 V40" 
+      stroke="#9D55F9"  
+      stroke-width="10"
+      stroke-linecap="round"
+      paint-order="stroke"
+    />
+  </g>
+</svg>
