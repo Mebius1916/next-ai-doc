@@ -41,8 +41,8 @@ const page = () => {
             onClick={() => setDialog(false)}
           />
           <div
-            className="fixed h-5/6 w-2/3 bg-[rgba(209,211,248,100)] top-1/2 left-1/2 -translate-x-1/2 
-          -translate-y-1/2 z-20 min-w-80 rounded-lg shadow-xl"
+            className="fixed h-[95vh] w-2/3 bg-[#EBEFFF] top-1/2 left-1/2 -translate-x-1/2 
+          -translate-y-1/2 z-20 min-w-80 rounded-xl shadow-xl"
           >
             <ChatDialog initialQuery={search} />
           </div>

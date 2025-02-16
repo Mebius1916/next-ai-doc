@@ -32,7 +32,7 @@ export const ListButton = () => {
             className="text-sm h-7 min-w-7 flex flex-col items-center justify-center rounded-sm hover:bg-neutral-200/80"
             type="button"
           >
-            <ListIcon className="size-4" />
+            <ListIcon className="size-4" color="#A9A9A9"/>
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="p-0">
@@ -45,8 +45,8 @@ export const ListButton = () => {
                 isActive() && "bg-neutral-200/80"
               )}
             >
-              <Icon className="size-4" />
-              <span className="text-sm">{label}</span>
+              <Icon className="size-4"/>
+              <span className="text-sm ">{label}</span>
             </button>
           ))}
         </DropdownMenuContent>

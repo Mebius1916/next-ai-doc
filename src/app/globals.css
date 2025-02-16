@@ -288,20 +288,13 @@ div[data-radix-popper-wrapper] {
   z-index: 50 !important;
 }
 
-/* 自定义滚动条样式 */
-.scroll-custom::-webkit-scrollbar {
-  width: 4px;
+/* 禁用浏览器滚动条 */
+*::-webkit-scrollbar {
+	display: none;
 }
-
-.scroll-custom::-webkit-scrollbar-track {
-  border-radius: 4px;
+* {
+	scrollbar-width: none;
 }
-
-.scroll-custom::-webkit-scrollbar-thumb {
-  background: #9D55F9;
-  border-radius: 2px;
-}
-
-.scroll-custom::-webkit-scrollbar-thumb:hover {
-  background: #9D55F9;
+* {
+	-ms-overflow-style: none;
 }

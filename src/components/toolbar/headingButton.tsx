@@ -21,6 +21,7 @@ export const HeadingLevelButton = () => {
     { label: "Heading 5", value: 5, fontSize: "16px" },
   ];
 
+  //用于返回当前选中文本的标题级别
   const getCurrentHeading = () => {
     for (let level = 1; level <= 5; level++) {
       if (editor?.isActive(`heading`, { level })) {
@@ -35,8 +36,8 @@ export const HeadingLevelButton = () => {
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <button className="h-7 w-[120px] flex shrink-0 items-center justify-center rounded-sm hover:bg-neutral-200/80 overflow-hidden text-sm">
-            <span className="truncate">{getCurrentHeading()}</span>
-            <ChevronDownIcon className="ml-2 size-4 shrink-0" />
+            <span className="truncate text-[#A9A9A9]">{getCurrentHeading()}</span>
+            <ChevronDownIcon className="ml-2 size-4 shrink-0" color="#A9A9A9"/>
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="p-1 flex flex-col gap-y-1">

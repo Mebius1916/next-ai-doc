@@ -76,12 +76,12 @@ export const FontSizeButton = () => {
     <div className="flex items-center gap-x-0.5">
       {/* 减号按钮 */}
       <button
-        className="shrink-0 h-7 w-7 flex flex-col items-center justify-center rounded-sm hover:bg-neutral-200/80"
+        className="shrink-0 h-7 w-7 flex flex-col items-center justify-center rounded-sm hover:bg-neutral-200/80 "
         onClick={decrement}
         title="font size"
         type="button"
       >
-        <MinusIcon className="size-4" />
+        <MinusIcon className="size-4" color="#A9A9A9"/>
       </button>
       {/* 输入框 */}
       {isEditing ? (
@@ -91,11 +91,11 @@ export const FontSizeButton = () => {
           onChange={handleInputChange} //编辑中保存
           onBlur={handleInputBlur} //失去焦点后保存
           onKeyDown={handleKeyDown} //回车保存
-          className="border border-neutral-400 text-center h-7 w-10 rounded-sm bg-transparent focus:outline-none focus:ring-0"
+          className="border border-neutral-400 text-center h-7 w-10 rounded-sm bg-transparent focus:outline-none focus:ring-0 text-sm"
         />
       ) : (
         <button
-          className="text-sm border border-neutral-400 text-center h-7 w-10 rounded-sm bg-transparent focus:outline-none focus:ring-0"
+          className="text-sm border border-neutral-400 text-center h-7 w-10 rounded-sm bg-transparent focus:outline-none focus:ring-0 text-[#A9A9A9]"
           onClick={() => {
             setIsEditing(true);
             setFontSize(currentFontSize);
@@ -113,7 +113,7 @@ export const FontSizeButton = () => {
         title="font size"
         type="button"
       >
-        <PlusIcon className="size-4" />
+        <PlusIcon className="size-4" color="#A9A9A9"/>
       </button>
     </div>
   );

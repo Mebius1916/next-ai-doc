@@ -21,7 +21,7 @@ export const ImageButton = () => {
         onSuccess={uploadPhoto}
         uploadPreset="kdm7bzdm"
       >
-        <ImageIcon className="size-4" />
+        <ImageIcon className="size-4" color="#A9A9A9"/>
       </CldUploadButton>
     </div>
   );

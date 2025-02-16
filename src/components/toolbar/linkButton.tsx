@@ -32,7 +32,7 @@ export const LinkButton = () => {
             title="Text Color"
             className="text-sm h-7 min-w-7 flex flex-col items-center justify-center rounded-sm hover:bg-neutral-200/80"
           >
-            <Link2Icon className="size-4" />
+            <Link2Icon className="size-4" color="#A9A9A9"/>
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="p-2.5 flex items-center gap-x-2">

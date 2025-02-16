@@ -59,8 +59,8 @@ def quick_sort(arr):
       initialProcessRef.current = true;
       const autoAsk = async () => {
         const userMessage = { role: "user", content: initialQuery };
-        setMessages(prev => {
-          if (prev.some(m => m.content === initialQuery)) return prev;
+        setMessages((prev) => {
+          if (prev.some((m) => m.content === initialQuery)) return prev;
           return [...prev, userMessage];
         });
         await handleSend(userMessage);
@@ -73,12 +73,12 @@ def quick_sort(arr):
     const userMessage = message || { role: "user", content: input };
     if (!userMessage.content.trim()) return;
     if (isFetching) return;
-    
-    setMessages(prev => {
-      if (prev.some(m => m.content === userMessage.content)) return prev;
+
+    setMessages((prev) => {
+      if (prev.some((m) => m.content === userMessage.content)) return prev;
       return [...prev, userMessage];
     });
-    
+
     if (!message) setInput("");
     setIsFetching(true);
     setCanScroll(true);
@@ -90,7 +90,6 @@ def quick_sort(arr):
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          model: "deepseek-chat",
           messages: [...messages.slice(-4), userMessage],
         }),
       });
@@ -110,8 +109,8 @@ def quick_sort(arr):
           if (line.startsWith("data:")) {
             const data = JSON.parse(line.slice(5).trim());
             const processedContent = data.content
-              .replace(/<think>/g, ">\n> **思考开始**\n> ")
-              .replace(/<\/think>/g, ">\n> **思考结束**\n> ");
+              .replace(/<think>/g, ">\n> **深度思考开始**\n> ")
+              .replace(/<\/think>/g, ">\n> **深度思考结束**\n> ");
 
             assistantMessage += processedContent;
 
@@ -141,7 +140,7 @@ def quick_sort(arr):
   return (
     <div className="flex-1 flex flex-col h-full p-0">
       <nav className="flex mx-auto">
-        <Image src="/logo.png" alt="Logo" width={150} height={150} />
+        <Image src="/logo.png" alt="Logo" width={100} height={100} />
       </nav>
       <ChatMessages messages={messages} messagesEndRef={messagesEndRef} />
       <ChatInput

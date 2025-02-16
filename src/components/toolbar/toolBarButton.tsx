@@ -24,7 +24,7 @@ export const ToolbarButton = ({
           isActive && "bg-neutral-200/80"
         )}
       >
-        <Icon className="size-4" />
+        <Icon className="size-4" color="#A9A9A9"/>
       </button>
     </div>
   );

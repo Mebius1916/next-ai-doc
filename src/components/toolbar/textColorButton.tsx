@@ -19,10 +19,10 @@ export const TextColorbutton = () => {
             title="Text Color"
             className="text-sm h-7 min-w-7 flex flex-col items-center justify-center rounded-sm hover:bg-neutral-200/80"
           >
-            <span className="text-xs">A</span>
+            <span className="text-xs text-[#A9A9A9]">A</span>
             <div
               className="h-0.5 w-full"
-              style={{ backgroundColor: value }}
+              style={{ backgroundColor: value === "#000000" ? "#A9A9A9" : value }}
             ></div>
           </button>
         </DropdownMenuTrigger>

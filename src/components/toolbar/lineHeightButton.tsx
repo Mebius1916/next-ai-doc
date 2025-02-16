@@ -24,7 +24,7 @@ export const LineHeightButton = () => {
             title="Align"
             className="text-sm h-7 min-w-7 flex flex-col items-center justify-center rounded-sm hover:bg-neutral-200/80"
           >
-            <ListCollapseIcon className="size-4" />
+            <ListCollapseIcon className="size-4" color="#A9A9A9"/>
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="p-0">

@@ -38,13 +38,14 @@ export const AlignButton = () => {
   ];
   return (
     <div className="flex flex-col items-center justify-center">
-      <DropdownMenu>
+      <DropdownMenu
+      >
         <DropdownMenuTrigger asChild>
           <button
             title="Align"
             className="text-sm h-7 min-w-7 flex flex-col items-center justify-center rounded-sm hover:bg-neutral-200/80"
           >
-            <AlignLeftIcon className="size-4" />
+            <AlignLeftIcon className="size-4" color="#A9A9A9" />
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="p-0">
@@ -54,9 +55,9 @@ export const AlignButton = () => {
               title={label}
               onClick={() => editor?.chain().focus().setTextAlign(value).run()}
               className={cn(
-                "w-full flex items-center gap-x-2 px-1 py-1 rounded-sm hover:bg-neutral-200/80",
+                "w-full flex items-center gap-x-2 px-1 py-1 rounded-sm hover:bg-neutral-200/80 text-sm",
                 editor?.isActive({ textAlign: value }) && "bg-neutral-200/80"
-              )}
+              )} 
             >
               <Icon className="size-4" />
               <span className="text-sm">{label}</span>

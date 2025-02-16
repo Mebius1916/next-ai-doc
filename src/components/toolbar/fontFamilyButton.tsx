@@ -31,10 +31,10 @@ export const FontFamilyButton = () => {
               "h-7 w-[120px] shrink-0 flex items-center justify-between rounded-sm hover:bg-neutral-200/80 px-1.5 overflow-hidden text-sm"
             )}
           >
-            <span className="truncate">
+            <span className="truncate text-[#A9A9A9]">
               {editor?.getAttributes("textStyle").fontFamily || "Arial"}
             </span>
-            <ChevronDownIcon className="ml-2 size-4 shrink-0" />
+            <ChevronDownIcon className="ml-2 size-4 shrink-0" color="#A9A9A9" />
           </button>
         </DropdownMenuTrigger>
         <DropdownMenuContent className="p-1 flex flex-col gap-y-1">
