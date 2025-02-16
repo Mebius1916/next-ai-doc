@@ -15,9 +15,11 @@ export const Document = ({ preloadedDocument }: DocumentProps) => {
   return (
     <Room>
       <div className="min-h-screen bg-[#EBEFFF]">
-        <div className="flex flex-col px-4 pt-2 fixed top-0 left-0 right-0 z-10 bg-[#EBEFFF] print:hidden">
+        <div className="flex flex-col fixed top-0 left-0 right-0 z-10 bg-[#EBEFFF] print:hidden">
           <Navbar data={document} />
-          <Toolbar />
+          <div className="pt-3">
+            <Toolbar />
+          </div>
         </div>
         <div className="pt-[95px] print:pt-0">
           <Editor initialContent={document.initialContent} />

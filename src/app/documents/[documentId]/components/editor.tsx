@@ -19,7 +19,7 @@ import { Highlight } from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
-// import { Ruler } from "./ruler";
+import { Ruler } from "./ruler";
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
 // import { Threads } from "./threads";
 import { useStorage } from "@liveblocks/react";
@@ -124,8 +124,8 @@ export const Editor = ({ initialContent }: EditorProps) => {
   });
   return (
     <div className="size-full overflow-x-auto px-4 print:p-0 print:bg-white print:overflow-visible">
-      {/* <Ruler /> */}
-      <div className="min-w-max flex justify-center w-[816px] pb-4 print:py-0 mx-auto print:w-full print:min-w-0">
+      <Ruler />
+      <div className="min-w-max flex justify-center w-[816px] pb-4 mt-1 print:py-0 mx-auto print:w-full print:min-w-0">
         <EditorContent editor={editor} />
         {/* <Threads editor={editor} /> */}
       </div>

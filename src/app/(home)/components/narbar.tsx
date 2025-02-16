@@ -9,7 +9,7 @@ export const Navbar = () => {
           <Image src="/logo.png" alt="Logo" width={150} height={150} />
         </Link>
       </div>
-      <div className="flex items-center gap-3 mr-2" >
+      <div className="flex items-center gap-3 mr-4" >
         <OrganizationSwitcher
           afterCreateOrganizationUrl="/"
           afterLeaveOrganizationUrl="/"

@@ -22,14 +22,14 @@ export const Marker = ({
       onMouseDown={onMouseDown}
       onDoubleClick={onDoubleClick}
     >
-      <FaCaretDown className="absolute left-1/2 top-0 h-full fill-blue-500 transform -translate-x-1/2" />
+      <FaCaretDown className="absolute left-1/2 top-0 h-full fill-[#5732E3] transform -translate-x-1/2" />
       <div
         className="absolute left-1/2 top-4 transform -translate-x-1/2"
         style={{
           width: "1px",
           height: "100vh",
           transform: "scaleX(0.5)",
-          backgroundColor: "#3b72f6",
+          backgroundColor: "#5732E3",
           display:isDragging ? "block" : "none",
         }}
       />

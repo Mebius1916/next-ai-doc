@@ -103,7 +103,7 @@ export const Navbar = ({ data }: NavbarProps) => {
   };
 
   return (
-    <nav className="flex items-center justify-between ">
+    <nav className="flex items-center justify-between shadow-lg w-full">
       <div className="flex items-center gap-2">
         <Link href="/">
           <Image src="/logo.svg" alt="Logo" width={36} height={36} />
@@ -278,7 +278,7 @@ export const Navbar = ({ data }: NavbarProps) => {
         </div>
       </div>
 
-      <div className="ml-auto flex items-center gap-3">
+      <div className="ml-auto flex items-center gap-3 mr-4">
         {/* <Avatars />
         <Inbox /> */}
         <OrganizationSwitcher
