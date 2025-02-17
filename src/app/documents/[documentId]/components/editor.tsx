@@ -128,10 +128,7 @@ export const Editor = ({ initialContent }: EditorProps) => {
   });
   return (
     <div className="size-full overflow-x-auto px-4 print:bg-white print:overflow-visible print:m-0">
-      <div className="print:hidden">
-        <Ruler />
-      </div>
-      <div className="flex justify-center w-[816px] min-h-[1054px] print:p-0 print:m-0 pb-4 mt-1 mx-auto print:min-w-0 print:max-w-[190mm] print:min-h-[277mm]">
+      <div className="flex justify-center w-[816px] min-h-[1054px] print:p-0 print:m-0 pb-4 mx-auto print:min-w-0 print:max-w-[190mm] print:min-h-[277mm]">
         <EditorContent editor={editor} />
         {/* <Threads editor={editor} /> */}
       </div>

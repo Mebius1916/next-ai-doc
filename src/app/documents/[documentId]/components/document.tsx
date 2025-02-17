@@ -5,6 +5,7 @@ import { Toolbar } from "./toolbar";
 import { Navbar } from "./narbar";
 import { Room } from "./room";
 import { Preloaded, usePreloadedQuery } from "convex/react";
+import { Ruler } from "./ruler";
 
 interface DocumentProps {
   preloadedDocument: Preloaded<typeof api.documents.getById>;
@@ -19,9 +20,10 @@ export const Document = ({ preloadedDocument }: DocumentProps) => {
           <Navbar data={document} />
           <div className="pt-1">
             <Toolbar />
+            <Ruler />
           </div>
         </div>
-        <div className="pt-[70px] print:pt-0">
+        <div className="pt-[100px] print:pt-0">
           <Editor initialContent={document.initialContent} />
         </div>
       </div>
