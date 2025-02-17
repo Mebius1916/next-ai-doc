@@ -1,5 +1,9 @@
 "use client";
-import { useEditor, EditorContent, type Editor as TiptapEditor } from "@tiptap/react";
+import {
+  useEditor,
+  EditorContent,
+  type Editor as TiptapEditor,
+} from "@tiptap/react";
 import StarterKit from "@tiptap/starter-kit";
 import TaskItem from "@tiptap/extension-task-item";
 import TaskList from "@tiptap/extension-task-list";
@@ -40,12 +44,12 @@ export const Editor = ({ initialContent }: EditorProps) => {
   );
   const liveblocks = useLiveblocksExtension({
     initialContent,
-    offlineSupport_experimental: true,//离线支持
+    offlineSupport_experimental: true, //离线支持
   });
   const { setEditor } = useEditorStore();
-  
+
   // 在组件顶层定义防抖函数
-  const debouncedSetEditor = useDebounce((editor:TiptapEditor) => {
+  const debouncedSetEditor = useDebounce((editor: TiptapEditor) => {
     setEditor(editor);
   }, 500);
 
@@ -82,7 +86,7 @@ export const Editor = ({ initialContent }: EditorProps) => {
     editorProps: {
       attributes: {
         class:
-          "focus:outline-none print:border-0 bg-white shadow-lg flex flex-col min-h-[1054px] w-[816px] pt-10 pr-14 pb-10 cursor-text print:shadow-none print:pt-0 print:pr-0 print:pb-0",
+          "focus:outline-none print:border-0 bg-white shadow-lg flex flex-col min-h-[1054px] w-[816px] py-10 pr-14 cursor-text print:shadow-none print:p-0 print:m-0 print:max-w-[190mm] print:min-h-[277mm]",
         style: `padding-left: ${leftMargin ?? LEFT_MARGIN_DEFAULT}px; padding-right:${rightMargin ?? RIGHT_MARGIN_DEFAULT}px;`,
       },
     },
@@ -123,9 +127,11 @@ export const Editor = ({ initialContent }: EditorProps) => {
     ],
   });
   return (
-    <div className="size-full overflow-x-auto px-4 print:p-0 print:bg-white print:overflow-visible">
-      <Ruler />
-      <div className="min-w-max flex justify-center w-[816px] pb-4 mt-1 print:py-0 mx-auto print:w-full print:min-w-0">
+    <div className="size-full overflow-x-auto px-4 print:bg-white print:overflow-visible print:m-0">
+      <div className="print:hidden">
+        <Ruler />
+      </div>
+      <div className="flex justify-center w-[816px] min-h-[1054px] print:p-0 print:m-0 pb-4 mt-1 mx-auto print:min-w-0 print:max-w-[190mm] print:min-h-[277mm]">
         <EditorContent editor={editor} />
         {/* <Threads editor={editor} /> */}
       </div>
