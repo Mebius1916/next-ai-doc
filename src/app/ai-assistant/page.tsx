@@ -5,7 +5,11 @@ import { ChatInput } from "./components/chatInput";
 import { useAutoScroll } from "@/hooks/useAutoScroll";
 import { ChatMessages } from "./components/chatMessage";
 
-const ChatDialog = ({ initialQuery }: { initialQuery?: string }) => {
+interface ChatDialogProps {
+  initialQuery?: string;
+  initialContent?: string;
+}
+const ChatDialog = ({ initialQuery,initialContent }: ChatDialogProps) => {
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -46,7 +50,9 @@ def quick_sort(arr):
   const initialProcessRef = useRef(false);
 
   useEffect(() => {
-    scrollToBottom();
+    if (messages.length > 1) {
+      scrollToBottom();
+    }
     return () => {
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
@@ -139,15 +145,18 @@ def quick_sort(arr):
 
   return (
     <div className="flex-1 flex flex-col h-full p-0">
-      <nav className="flex mx-auto">
-        <Image src="/logo.png" alt="Logo" width={100} height={100} />
-      </nav>
-      <ChatMessages messages={messages} messagesEndRef={messagesEndRef} />
+      {initialContent!=="Lassistant"&&(
+        <div className="flex mx-auto mt-10">
+          <Image src="/logo2.png" alt="Logo" width={100} height={100} />
+        </div>
+      )}
+      <ChatMessages messages={messages} messagesEndRef={messagesEndRef} initialContent={initialContent} />
       <ChatInput
         input={input}
         setInput={setInput}
         handleSend={handleSend}
         isFetching={isFetching}
+        initialContent={initialContent}
       />
     </div>
   );

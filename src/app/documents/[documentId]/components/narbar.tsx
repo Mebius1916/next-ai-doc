@@ -41,7 +41,7 @@ export const Navbar = ({ data }: NavbarProps) => {
 
   return (
     <div className="relative">
-      <nav className="flex items-center justify-between shadow-lg w-full bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100">
+      <nav className="flex items-center justify-between shadow-lg w-full bg-gradient-to-br from-blue-100 via-blue-50 to-blue-100">
       <div className="flex gap-3 items-center shrink-0 ml-4">
         <Link href="/">
           <Image src="/logo2.png" alt="Logo" width={100} height={100} />

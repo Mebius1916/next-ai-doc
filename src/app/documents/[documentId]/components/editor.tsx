@@ -24,10 +24,10 @@ import TextAlign from "@tiptap/extension-text-align";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
-import { Threads } from "./threads";
 import { useStorage } from "@liveblocks/react";
 import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/lib/margin";
 import { useDebounce } from "@/hooks/use-debounce";
+import { Threads } from "./threads";
 
 interface EditorProps {
   initialContent?: string | undefined;

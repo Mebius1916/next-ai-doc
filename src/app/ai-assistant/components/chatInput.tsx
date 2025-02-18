@@ -8,6 +8,7 @@ interface ChatInputProps {
   setInput: (value: string) => void;
   handleSend: () => void;
   isFetching: boolean;
+  initialContent?: string;
 }
 
 export const ChatInput = ({
@@ -15,9 +16,10 @@ export const ChatInput = ({
   setInput,
   handleSend,
   isFetching,
+  initialContent,
 }: ChatInputProps) => {
   return (
-    <div className="flex w-full max-w-4xl mb-4 m-auto relative">
+    <div className={`flex w-full ${initialContent!=="Lassistant"?"max-w-4xl":"max-w-[calc(100%-2rem)]"} mb-4 m-auto relative`}>
       <input
         type="text"
         value={input}
