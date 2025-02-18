@@ -9,8 +9,8 @@ import { toast } from "sonner";
 import { Doc } from "../../../../../convex/_generated/dataModel";
 import { api } from "../../../../../convex/_generated/api";
 import { EditorMenu } from "./menu";
-import { useState } from "react";
-import { PanelBottomClose } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
 
 interface NavbarProps {
   data: Doc<"documents">;
@@ -40,10 +40,13 @@ export const Navbar = ({ data }: NavbarProps) => {
   };
 
   return (
-    <div
-      className="relative"
-    >
-      <nav className="flex items-center justify-between shadow-lg w-full">
+    <div className="relative">
+      <nav className="flex items-center justify-between shadow-lg w-full bg-gradient-to-r from-blue-100 via-blue-50 to-blue-100">
+      <div className="flex gap-3 items-center shrink-0 ml-4">
+        <Link href="/">
+          <Image src="/logo2.png" alt="Logo" width={100} height={100} />
+        </Link>
+      </div>
         <div className="flex items-center gap-2 h-10 ml-2">
           <DocumentInput title={data.title} id={data._id} />
         </div>
@@ -57,14 +60,14 @@ export const Navbar = ({ data }: NavbarProps) => {
           <UserButton />
         </div>
       </nav>
-        <div className="flex absolute mt-1">
-          <EditorMenu
-            data={data}
-            editor={editor}
-            onNewDocument={onNewDocument}
-            insertTable={insertTable}
-          />
-        </div>
+      <div className="flex absolute mt-2">
+        <EditorMenu
+          data={data}
+          editor={editor}
+          onNewDocument={onNewDocument}
+          insertTable={insertTable}
+        />
+      </div>
     </div>
   );
 };

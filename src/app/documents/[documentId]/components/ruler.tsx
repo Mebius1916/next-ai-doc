@@ -111,7 +111,7 @@ export const Ruler = () => {
       onMouseMove={handleMouseMove} // 鼠标移动事件（拖拽）
       onMouseUp={handleMouseUp} // 鼠标松开事件（停止拖拽）
       onMouseLeave={handleMouseUp} // 鼠标离开事件（停止拖拽）
-      className="w-[816px] mx-auto h-6 border-b border-gray-300 flex items-end relative select-none print:hidden"
+      className="w-[816px] mx-auto h-6 border-b border-gray-300 flex items-end relative select-none print:hidden mb-1"
     >
       <div id="ruler-container" className="w-full h-full mx-auto relative">
         <Marker
@@ -138,6 +138,7 @@ export const Ruler = () => {
                   className="absolute bottom-0"
                   style={{ left: `${position}px` }}
                 >
+                  {/* 主刻度（每1cm）：显示最高刻度线和数字 */}
                   {marker % 10 === 0 && (
                     <>
                       <div className="absolute bottom-0 w-[1px] h-2 bg-neutral-500" />
@@ -146,9 +147,13 @@ export const Ruler = () => {
                       </span>
                     </>
                   )}
+                  
+                  {/* 中等刻度（每0.5cm）：显示中等高度刻度线 */}
                   {marker % 5 === 0 && marker % 10 !== 0 && (
                     <div className="absolute bottom-0 w-[1px] h-1.5 bg-neutral-500" />
                   )}
+                  
+                  {/* 小刻度（每0.1cm）：显示最矮刻度线 */}
                   {marker % 5 !== 0 && (
                     <div className="absolute bottom-0 w-[1px] h-1 bg-neutral-500" />
                   )}

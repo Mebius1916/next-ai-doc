@@ -23,9 +23,8 @@ import { Highlight } from "@tiptap/extension-highlight";
 import TextAlign from "@tiptap/extension-text-align";
 import { FontSizeExtension } from "@/extensions/font-size";
 import { LineHeightExtension } from "@/extensions/line-height";
-import { Ruler } from "./ruler";
 import { useLiveblocksExtension } from "@liveblocks/react-tiptap";
-// import { Threads } from "./threads";
+import { Threads } from "./threads";
 import { useStorage } from "@liveblocks/react";
 import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/lib/margin";
 import { useDebounce } from "@/hooks/use-debounce";
@@ -130,7 +129,7 @@ export const Editor = ({ initialContent }: EditorProps) => {
     <div className="size-full overflow-x-auto px-4 print:bg-white print:overflow-visible print:m-0">
       <div className="flex justify-center w-[816px] min-h-[1054px] print:p-0 print:m-0 pb-4 mx-auto print:min-w-0 print:max-w-[190mm] print:min-h-[277mm]">
         <EditorContent editor={editor} />
-        {/* <Threads editor={editor} /> */}
+        <Threads editor={editor} />
       </div>
     </div>
   );

@@ -17,7 +17,7 @@ export const Toolbar = () => {
   const { editor } = useEditorStore();
   const sections = getToolbarSections(editor || undefined);
   return (
-    <div className="flex mx-auto w-[816px] ">
+    <div className="flex mx-auto w-[816px] mt-2">
       {sections[0].map((item) => (
         <ToolbarButton key={item.label} {...item} />
       ))}
