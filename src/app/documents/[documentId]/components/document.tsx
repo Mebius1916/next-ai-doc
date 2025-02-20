@@ -141,7 +141,7 @@ export const Document = ({ preloadedDocument, currentUser }: DocumentProps) => {
                 {messages?.map((message) => (
                   <div
                     key={message._id}
-                    className="p-2 rounded-lg max-w-[95%] shadow-lg mx-auto "
+                    className="p-2 rounded-lg max-w-[95%]  mx-auto "
                   >
                     <div className="flex items-center">
                       <div className="flex items-center flex-col justify-center w-12">

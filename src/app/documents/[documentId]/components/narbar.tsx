@@ -60,7 +60,7 @@ export const Navbar = ({ data }: NavbarProps) => {
           <UserButton />
         </div>
       </nav>
-      <div className="flex absolute mt-2">
+      <div className="absolute mt-2 hidden lg:block">
         <EditorMenu
           data={data}
           editor={editor}
