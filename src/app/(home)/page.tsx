@@ -20,7 +20,7 @@ const page = () => {
     setDialog(true);
     // console.log(search);
   };
-  
+
   return (
     <div
       className="min-h-screen flex flex-col"
@@ -52,13 +52,11 @@ const page = () => {
       <div className="mt-10">
         <SearchInput dialog={aiDialog} />
         <TemplateGallery />
-        <div className="scroll-custom flex-1 overflow-y-auto h-[calc(100vh-30rem)] px-4">
-          <DocumentsTable
-            documents={results}
-            loadMore={loadMore}
-            status={status}
-          />
-        </div>
+        <DocumentsTable
+          documents={results}
+          loadMore={loadMore}
+          status={status}
+        />
       </div>
     </div>
   );

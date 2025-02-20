@@ -37,7 +37,7 @@ export const SearchInput = ({ dialog }: Props) => {
         ✨ Search <span className="mx-3 opacity-50 ">│</span> 💭 Ask AI
       </span>
       <div className="flex-1 flex items-center justify-center mt-6">
-        <form className="relative max-w-[720px] w-full" onSubmit={handleSubmit}>
+        <form className="relative max-w-[720px] w-[75%]" onSubmit={handleSubmit}>
           <Input
             value={value}
             onChange={handleChange}

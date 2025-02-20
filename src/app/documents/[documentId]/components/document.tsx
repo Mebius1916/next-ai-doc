@@ -97,8 +97,9 @@ export const Document = ({ preloadedDocument, currentUser }: DocumentProps) => {
           {dialog && (
             <div
               className="fixed flex flex-col w-[406px] 
-            h-[calc(100vh_-_100px_-_20px)] bg-gradient-to-br from-purple-50 to-blue-50 right-0 top-[104px] mr-2 z-10
-            shadow-lg rounded-md print:hidden"
+            h-[calc(100vh_-_100px_-_20px)] bg-gradient-to-br from-blue-50 
+            via-slate-50 to-blue-50  right-0 top-[104px] mr-2 z-10
+            shadow-lg rounded-md print:hidden border-2 border-blue-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -119,9 +120,9 @@ export const Document = ({ preloadedDocument, currentUser }: DocumentProps) => {
           )}
           {chat && (
             <div
-              className="fixed flex flex-col w-[406px] 
-            h-[calc(100vh_-_100px_-_20px)] bg-gradient-to-br from-purple-50 to-blue-50 left-0 top-[104px] ml-2 z-10
-            shadow-lg rounded-md print:hidden"
+              className="fixed flex flex-col w-[406px] h-[calc(100vh_-_100px_-_20px)] bg-gradient-to-br 
+              from-blue-50 via-slate-50 to-blue-50 left-0 top-[104px] ml-2 z-10 shadow-lg rounded-md 
+              print:hidden border-2 border-blue-100"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -144,8 +145,8 @@ export const Document = ({ preloadedDocument, currentUser }: DocumentProps) => {
                     className="p-2 rounded-lg max-w-[95%]  mx-auto "
                   >
                     <div className="flex items-center">
-                      <div className="flex items-center flex-col justify-center w-12">
-                        <p className="text-[7px] text-gray-600 max-w-[66.5px] truncate px-1">
+                      <div className="flex items-center flex-col w-12">
+                        <p className="text-[8px] text-gray-600 max-w-[66.5px] truncate px-1">
                           {message.name}
                         </p>
                         <Image
@@ -157,8 +158,8 @@ export const Document = ({ preloadedDocument, currentUser }: DocumentProps) => {
                         />
                       </div>
 
-                      <div className="flex-1 min-w-0 max-w-[82%] mx-auto rounded-lg overflow-auto bg-white">
-                        <div className=" h-16 p-1 break-words whitespace-pre-wrap relative">
+                      <div className="flex-1 min-w-0 max-w-[82%] mx-auto rounded-lg overflow-auto bg-white mt-2">
+                        <div className=" h-12 p-1 break-words whitespace-pre-wrap relative">
                           <p className="text-gray-800 text-sm px-1 ">
                             {message.content}
                           </p>

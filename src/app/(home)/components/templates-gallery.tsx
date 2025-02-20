@@ -55,7 +55,7 @@ export const TemplateGallery = () => {
                     backgroundPosition: "center",
                     backgroundRepeat: "no-repeat",
                   }}
-                  className="size-full hover:border-blue-500 rounded-sm border hover:bg-blue-50
+                  className="size-full rounded-sm border hover:bg-purple-50
                   "
                 />
                 <p className="text-sm font-medium truncate">{template.label}</p>

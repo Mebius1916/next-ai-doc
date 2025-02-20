@@ -9,7 +9,12 @@ interface ChatDialogProps {
   initialQuery?: string;
   initialContent?: string;
 }
+
+// AI聊天对话框组件
+// initialQuery - 初始查询语句，组件加载时会自动发送
+// initialContent - 初始化内容类型，用于控制界面元素显示
 const ChatDialog = ({ initialQuery,initialContent }: ChatDialogProps) => {
+  // 消息列表状态，包含初始欢迎信息
   const [messages, setMessages] = useState([
     {
       role: "assistant",
@@ -37,18 +42,25 @@ def quick_sort(arr):
 💡 您可以直接输入问题，或粘贴需要分析的代码片段`,
     },
   ]);
+  
+  // 输入框状态
   const [input, setInput] = useState("");
+  
+  // 请求状态标识
   const [isFetching, setIsFetching] = useState(false);
+  
+  // 自动滚动相关配置
   const {
-    messagesEndRef,
-    scrollToBottom,
-    canScroll,
-    setCanScroll,
-    timeoutRef,
+    messagesEndRef,    // 消息容器底部引用
+    scrollToBottom,   // 滚动到底部方法
+    setCanScroll,     // 设置是否允许自动滚动
+    timeoutRef,       // 滚动定时器引用
   } = useAutoScroll();
-  const [hasProcessedInitial, setHasProcessedInitial] = useState(false);
+  
+  // 初始请求处理标识（防止重复处理）
   const initialProcessRef = useRef(false);
 
+  // 消息变化时自动滚动处理
   useEffect(() => {
     if (messages.length > 1) {
       scrollToBottom();
@@ -60,6 +72,7 @@ def quick_sort(arr):
     };
   }, [messages]);
 
+  // 初始查询处理（组件加载时自动发送查询）
   useEffect(() => {
     if (initialQuery && initialQuery.trim() && !initialProcessRef.current) {
       initialProcessRef.current = true;
@@ -75,21 +88,26 @@ def quick_sort(arr):
     }
   }, [initialQuery]);
 
+  // 发送消息处理函数
   const handleSend = async (message?: { role: string; content: string }) => {
+    // 准备消息内容
     const userMessage = message || { role: "user", content: input };
     if (!userMessage.content.trim()) return;
     if (isFetching) return;
 
+    // 更新消息列表
     setMessages((prev) => {
       if (prev.some((m) => m.content === userMessage.content)) return prev;
       return [...prev, userMessage];
     });
 
+    // 清空输入框（非预设消息时）
     if (!message) setInput("");
     setIsFetching(true);
     setCanScroll(true);
 
     try {
+      // 发送聊天请求到API
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
@@ -100,6 +118,7 @@ def quick_sort(arr):
         }),
       });
 
+      // 流式数据处理
       const reader = response.body?.getReader();
       const decoder = new TextDecoder();
       let assistantMessage = "";
@@ -108,11 +127,13 @@ def quick_sort(arr):
         const { done, value } = await reader!.read();
         if (done) break;
 
+        // 解码并处理数据块
         const chunk = decoder.decode(value);
         const lines = chunk.split("\n\n").filter((line) => line.trim());
 
         for (const line of lines) {
           if (line.startsWith("data:")) {
+            // 解析并处理消息内容
             const data = JSON.parse(line.slice(5).trim());
             const processedContent = data.content
               .replace(/<think>/g, ">\n> **深度思考开始**\n> ")
@@ -120,6 +141,7 @@ def quick_sort(arr):
 
             assistantMessage += processedContent;
 
+            // 更新助手消息内容
             setMessages((prev) => {
               const lastMessage = prev[prev.length - 1];
               if (lastMessage?.role === "assistant") {
