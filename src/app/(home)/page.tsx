@@ -18,8 +18,9 @@ const page = () => {
   );
   const aiDialog = () => {
     setDialog(true);
-    console.log(search);
+    // console.log(search);
   };
+  
   return (
     <div
       className="min-h-screen flex flex-col"

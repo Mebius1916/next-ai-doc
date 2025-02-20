@@ -30,7 +30,7 @@ export async function POST(req: Request) {
   const document = await convex.query(api.documents.getById, {
     id: room,
   });
-
+  // console.log(document);
   // 文档不存在时返回未授权
   if (!document) {
     return new Response("Unauthorized", { status: 401 });
@@ -39,11 +39,11 @@ export async function POST(req: Request) {
   // 权限验证逻辑：
   // 1. 检查是否是文档所有者
   const isOwner = document.ownerId === user.id;
+  console.log(document.organizationId);
   // 2. 检查是否是组织成员（需匹配组织ID且不为空）
   const isOrganizationMember = !!(
-    document.organizationId && document.organizationId === sessionClaims.org_Id
+    document.organizationId && document.organizationId === sessionClaims.org_id
   );
-
   // 双重权限校验失败时返回未授权
   if (!isOwner && !isOrganizationMember) {
     return new Response("Unauthorized", { status: 401 });

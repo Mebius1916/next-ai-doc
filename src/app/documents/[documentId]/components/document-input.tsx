@@ -80,7 +80,7 @@ export const DocumentInput = ({ title, id }: DocumentInputProps) => {
             onChange={onChange}
             //失去焦点时触发
             onBlur={() => setIsEditing(false)}
-            className="absolute inset-0 text-lg text-black px-1.5 bg-transparent truncate"
+            className="absolute inset-0 text-lg text-black px-1.5 bg-transparent truncate focus:outline-none focus:ring-0"
           />
         </form>
       ) : (

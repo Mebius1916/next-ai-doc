@@ -11,15 +11,14 @@ export const create = mutation({
   handler: async (ctx, args) => {
     // 获取当前用户身份
     const user = await ctx.auth.getUserIdentity();
-
     // 如果用户未登录，抛出未授权错误
     if (!user) {
       throw new ConvexError("Unathorized");
     }
-    const organizationId = (user.organization ?? undefined) as
+    const organizationId = (user.organization_id ?? undefined) as
       | string
       | undefined;
-
+  
     // 在数据库中创建新文档
     return await ctx.db.insert("documents", {
       title: args.title ?? "Untitled coument",
@@ -58,7 +57,7 @@ export const removeById = mutation({
     const isOrganizationMember = !!(
       document.organizationId && document.organizationId === organizationId
     );
-    
+
     if (!isOwner && !isOrganizationMember) {
       throw new ConvexError("Unauthorized");
     }
@@ -105,7 +104,6 @@ export const get = query({
   },
 
   handler: async (ctx, { search, paginationOpts }) => {
-
     const user = await ctx.auth.getUserIdentity();
 
     if (!user) {
@@ -118,11 +116,11 @@ export const get = query({
 
     if (search && organizationId) {
       return await ctx.db
-        .query("documents")//查询documents数据库
+        .query("documents") //查询documents数据库
         .withSearchIndex("search_title", (q) =>
           q.search("title", search).eq("organizationId", organizationId)
         )
-        .paginate(paginationOpts);//分页
+        .paginate(paginationOpts); //分页
     }
 
     //如果只提供搜索参数
@@ -173,10 +171,10 @@ export const getByIds = query({
   args: { ids: v.array(v.id("documents")) },
   handler: async (ctx, { ids }) => {
     const documents = [];
-    
+
     for (const id of ids) {
       const document = await ctx.db.get(id);
-      
+
       if (document) {
         documents.push({ id: document._id, name: document.title });
       } else {
