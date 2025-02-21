@@ -8,7 +8,7 @@ import { useSearchParams } from "@/hooks/use-search-params";
 import { usePaginatedQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import ChatDialog from "../ai-assistant/page";
-const page = () => {
+const Page = () => {
   const [dialog, setDialog] = useState(false);
   const [search] = useSearchParams("search");
   const { results, status, loadMore } = usePaginatedQuery(
@@ -62,4 +62,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

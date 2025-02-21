@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 
-let requests: { [key: string]: { count: number; startTime: number } } = {};
+const requests: { [key: string]: { count: number; startTime: number } } = {};
 const RATE_LIMIT = 100;
 const TIME_FRAME = 60 * 60 * 1000;
 
@@ -33,7 +33,7 @@ export async function POST(request: Request) {
     });
   }
 
-  const { messages, model } = await request.json();
+  const { messages } = await request.json();
   const openai = new OpenAI({
     baseURL: "https://api.055ai.cn/v1/",
     apiKey: process.env.DEEP_SEEK_API_KEY,

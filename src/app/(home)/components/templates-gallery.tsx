@@ -37,7 +37,7 @@ export const TemplateGallery = () => {
           {templates.map((template) => (
             <CarouselItem
               key={template.id}
-              className="basis-1/2 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 2xl:basis-[14.285714%] pl-4"
+              className="basis-1/6 sm:basis-1/3 md:basis-1/4 lg:basis-1/5 xl:basis-1/6 2xl:basis-[14.285714%] pl-4"
             >
               <div
                 className={cn(

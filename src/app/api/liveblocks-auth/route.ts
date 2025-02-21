@@ -39,7 +39,7 @@ export async function POST(req: Request) {
   // 权限验证逻辑：
   // 1. 检查是否是文档所有者
   const isOwner = document.ownerId === user.id;
-  console.log(document.organizationId);
+  // console.log(document.organizationId);
   // 2. 检查是否是组织成员（需匹配组织ID且不为空）
   const isOrganizationMember = !!(
     document.organizationId && document.organizationId === sessionClaims.org_id

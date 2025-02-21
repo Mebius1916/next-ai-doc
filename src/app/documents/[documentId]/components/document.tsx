@@ -35,7 +35,7 @@ export const Document = ({ preloadedDocument, currentUser }: DocumentProps) => {
   const messages = useQuery(api.chat.getRoomMessages, {
     organizationId: document.organizationId || "", // 使用文档的organizationId作为房间ID
   });
-  console.log(messages);
+  // console.log(messages);
   // 发送消息mutation
   const sendMessage = useMutation(api.chat.sendMessage);
 

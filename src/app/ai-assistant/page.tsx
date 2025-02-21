@@ -5,15 +5,10 @@ import { ChatInput } from "./components/chatInput";
 import { useAutoScroll } from "@/hooks/useAutoScroll";
 import { ChatMessages } from "./components/chatMessage";
 
-interface ChatDialogProps {
-  initialQuery?: string;
-  initialContent?: string;
-}
-
 // AI聊天对话框组件
 // initialQuery - 初始查询语句，组件加载时会自动发送
 // initialContent - 初始化内容类型，用于控制界面元素显示
-const ChatDialog = ({ initialQuery,initialContent }: ChatDialogProps) => {
+const ChatDialog = ({ initialQuery, initialContent }: any) => {
   // 消息列表状态，包含初始欢迎信息
   const [messages, setMessages] = useState([
     {
@@ -62,31 +57,16 @@ def quick_sort(arr):
 
   // 消息变化时自动滚动处理
   useEffect(() => {
+    const currentTimeoutRef = timeoutRef.current; // 复制值到变量
     if (messages.length > 1) {
       scrollToBottom();
     }
     return () => {
-      if (timeoutRef.current) {
-        clearTimeout(timeoutRef.current);
+      if (currentTimeoutRef) {
+        clearTimeout(currentTimeoutRef);
       }
     };
-  }, [messages]);
-
-  // 初始查询处理（组件加载时自动发送查询）
-  useEffect(() => {
-    if (initialQuery && initialQuery.trim() && !initialProcessRef.current) {
-      initialProcessRef.current = true;
-      const autoAsk = async () => {
-        const userMessage = { role: "user", content: initialQuery };
-        setMessages((prev) => {
-          if (prev.some((m) => m.content === initialQuery)) return prev;
-          return [...prev, userMessage];
-        });
-        await handleSend(userMessage);
-      };
-      autoAsk();
-    }
-  }, [initialQuery]);
+  }, [messages, scrollToBottom]); // 添加 scrollToBottom 作为依赖
 
   // 发送消息处理函数
   const handleSend = async (message?: { role: string; content: string }) => {
@@ -165,6 +145,22 @@ def quick_sort(arr):
     }
   };
 
+  // 初始查询处理（组件加载时自动发送查询）
+  useEffect(() => {
+    if (initialQuery && initialQuery.trim() && !initialProcessRef.current) {
+      initialProcessRef.current = true;
+      const autoAsk = async () => {
+        const userMessage = { role: "user", content: initialQuery };
+        setMessages((prev) => {
+          if (prev.some((m) => m.content === initialQuery)) return prev;
+          return [...prev, userMessage];
+        });
+        await handleSend(userMessage);
+      };
+      autoAsk();
+    }
+  }, [initialQuery, handleSend]); // 添加 handleSend 作为依赖
+
   return (
     <div className="flex-1 flex flex-col h-full p-0">
       {initialContent!=="Lassistant"&&(
@@ -172,13 +168,13 @@ def quick_sort(arr):
           <Image src="/logo2.png" alt="Logo" width={100} height={100} />
         </div>
       )}
-      <ChatMessages messages={messages} messagesEndRef={messagesEndRef} initialContent={initialContent} />
+      <ChatMessages messages={messages} messagesEndRef={messagesEndRef} initialContent={initialContent||""} />
       <ChatInput
         input={input}
         setInput={setInput}
         handleSend={handleSend}
         isFetching={isFetching}
-        initialContent={initialContent}
+        initialContent={initialContent||""}
       />
     </div>
   );

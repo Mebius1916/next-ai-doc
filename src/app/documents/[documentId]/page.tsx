@@ -17,7 +17,7 @@ const page = async ({ params }: DocumentIdPageProps) => {
     throw new Error("Unauthorized");
   }
   const user = await currentUser();
-  console.log("user", user);
+  // console.log("user", user);
   // 使用数组过滤null值并拼接
   const userNameParts = [user?.firstName, user?.lastName].filter(Boolean);
   const userName = userNameParts.join(' ') || user?.emailAddresses[0].emailAddress;

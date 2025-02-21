@@ -1,7 +1,6 @@
 import { useEditorStore } from "@/store/use-editor-store";
 import { ImageIcon } from "lucide-react";
-import { CldUploadButton } from "next-cloudinary";
-
+import { CldUploadButton, CloudinaryUploadWidgetResults } from "next-cloudinary";
 
 export const ImageButton = () => {
   const onChange = (src: string) => {
@@ -9,9 +8,12 @@ export const ImageButton = () => {
     currentEditor?.chain().focus().setImage({ src }).run();
   }
 
-  const uploadPhoto = (result: any) => {
-    onChange(result?.info?.secure_url);
+  const uploadPhoto = (result: CloudinaryUploadWidgetResults) => {
+    const secureUrl = typeof result.info === 'object' ? result.info?.secure_url : "";
+    onChange(secureUrl);
   };
+
+
 
   return (
     <div className="flex flex-col items-center justify-center">
