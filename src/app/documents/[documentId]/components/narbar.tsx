@@ -11,6 +11,8 @@ import { api } from "../../../../../convex/_generated/api";
 import { EditorMenu } from "./menu";
 import Image from "next/image";
 import Link from "next/link";
+import { Inbox } from "./inbox";
+import { Avatars } from "./avatars";
 
 interface NavbarProps {
   data: Doc<"documents">;
@@ -42,15 +44,17 @@ export const Navbar = ({ data }: NavbarProps) => {
   return (
     <div className="relative">
       <nav className="flex items-center justify-between shadow-lg w-full bg-gradient-to-br from-blue-100 via-blue-50 to-blue-100">
-      <div className="flex gap-3 items-center shrink-0 ml-4">
-        <Link href="/">
-          <Image src="/logo2.png" alt="Logo" width={100} height={100} />
-        </Link>
-      </div>
+        <div className="flex gap-3 items-center shrink-0 ml-4">
+          <Link href="/">
+            <Image src="/logo2.png" alt="Logo" width={100} height={100} />
+          </Link>
+        </div>
         <div className="flex items-center gap-2 h-10 ml-2">
           <DocumentInput title={data.title} id={data._id} />
         </div>
         <div className="ml-auto flex items-center gap-3 mr-4">
+         <Avatars />
+          <Inbox />
           <OrganizationSwitcher
             afterCreateOrganizationUrl="/"
             afterLeaveOrganizationUrl="/"
