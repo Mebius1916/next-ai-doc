@@ -1,6 +1,7 @@
 import { MinusIcon, PlusIcon } from "lucide-react";
 import { useEditorStore } from "@/store/use-editor-store";
 import { useState, useEffect } from "react";
+import { useDebounce } from "@/hooks/use-debounce";
 
 export const FontSizeButton = () => {
   const { editor } = useEditorStore();
@@ -61,16 +62,16 @@ export const FontSizeButton = () => {
   };
 
   //字号减
-  const increment = () => {
+  const increment = useDebounce (() => {
     const newSize = parseInt(fontSize) + 1;
     updateFontSize(newSize.toString());
-  };
+  }, 500);
 
   //字号加
-  const decrement = () => {
+  const decrement = useDebounce (() => {
     const newSize = parseInt(fontSize) - 1;
     updateFontSize(newSize.toString());
-  };
+  }, 500);
 
   return (
     <div className="flex items-center gap-x-0.5">

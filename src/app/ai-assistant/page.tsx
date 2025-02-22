@@ -4,11 +4,12 @@ import Image from "next/image";
 import { ChatInput } from "./components/chatInput";
 import { useAutoScroll } from "@/hooks/useAutoScroll";
 import { ChatMessages } from "./components/chatMessage";
-
+import { useSearchParams } from "@/hooks/use-search-params";
 // AI聊天对话框组件
 // initialQuery - 初始查询语句，组件加载时会自动发送
 // initialContent - 初始化内容类型，用于控制界面元素显示
-const ChatDialog = ({ initialQuery, initialContent }: any) => {
+const ChatDialog = ({ initialContent }: any) => {
+  const [initialQuery,setInitialQuery] = useSearchParams("search");
   // 消息列表状态，包含初始欢迎信息
   const [messages, setMessages] = useState([
     {
@@ -74,7 +75,6 @@ def quick_sort(arr):
     const userMessage = message || { role: "user", content: input };
     if (!userMessage.content.trim()) return;
     if (isFetching) return;
-
     // 更新消息列表
     setMessages((prev) => {
       if (prev.some((m) => m.content === userMessage.content)) return prev;
@@ -156,6 +156,7 @@ def quick_sort(arr):
           return [...prev, userMessage];
         });
         await handleSend(userMessage);
+        setInitialQuery("");
       };
       autoAsk();
     }
