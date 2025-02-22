@@ -5,7 +5,6 @@ import { SiGoogledocs } from "react-icons/si";
 import { Building2Icon, CircleUserIcon } from "lucide-react";
 import { format } from "date-fns";
 import { DocumentMenu } from "./document-menu";
-import { useRouter } from "next/navigation";
 import { Doc } from "../../../../convex/_generated/dataModel";
 
 // 定义组件的 Props 接口
@@ -15,13 +14,12 @@ interface DocumentRowProps {
 
 // 定义 DocumentRow 组件
 export const DocumentRow = ({ document }: DocumentRowProps) => {
-  const router = useRouter();
   const onNewTabClick = (id: string, e: React.MouseEvent) => {
     e.stopPropagation(); // 阻止事件冒泡
     window.open(`/documents/${id}`, "_blank"); //在新标签页中打开标签
   };
   const onRowClick = (id: string) => {
-    router.push(`/documents/${id}`);
+    window.open(`/documents/${id}`, "_blank");
   };
   return (
     <TableRow className="cursor-pointer" onClick={() => onRowClick(document._id)}>
