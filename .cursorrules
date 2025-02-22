@@ -1,0 +1,28 @@
+# 项目名称
+项目名称：基于 Next.js 的协同文档，集成了 AI 对话和实时聊天
+
+# 代码风格
+- 使用 ESLint 进行代码风格检查，遵循 Airbnb 规范
+- 变量和函数名使用 camelCase 命名法
+- 类名使用 PascalCase 命名法
+
+# 技术栈
+- 使用 TypeScript 进行类型检查
+- 使用 React 进行组件开发
+- 使用 Next.js 进行服务器端渲染
+- 使用 Tailwind CSS 进行样式管理
+
+# 状态管理
+- 前端框架：React@19 + Next.js@15.0.3
+- 状态管理：zustand
+- UI 组件库：shadcnUI
+
+# 托管服务
+- 托管服务：convex、liveblocks、clerk
+
+# 异常处理
+- 使用 try...catch 语句捕获和处理异常
+- 对异步操作使用 Promise 或 async/await
+
+# 文档注释
+- 使用 JSDoc 编写函数注释
