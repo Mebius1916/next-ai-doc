@@ -14,6 +14,11 @@ import { Id } from "../../../../../convex/_generated/dataModel";
 import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/lib/margin";
 type User = { id: string; name: string; avatar: string };
 
+type Document = {
+  id: string;
+  name: string;
+};
+
 export function Room({ children }: { children: ReactNode }) {
   const params = useParams();
   const documentId = params.documentId as string;
@@ -66,7 +71,7 @@ export function Room({ children }: { children: ReactNode }) {
         // 1. 用户输入新的文档引用时（比如输入 [[ 时）
         // 2. 文档内容发生变化时
         // 3. 被引用的文档信息更新时（通过 Liveblocks 的实时连接）
-        const documents = await getDocuments(roomIds as Id<"documents">[]);
+        const documents: Document[] = await getDocuments(roomIds as Id<"documents">[]);
         return documents.map((document) => ({
           id: document.id,
           name: document.name,

@@ -8,8 +8,16 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["img.clerk.com"],
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'img.clerk.com',
+        port: '', // 如果没有特定端口，可以留空
+        pathname: '/**', // 允许的路径模式
+      },
+    ],
     loader: "default",
+    formats: ["image/avif", "image/webp"],
   },
   typescript: {
     ignoreBuildErrors: true, // 允许使用 any 类型

@@ -2,7 +2,9 @@ import ReactMarkdown from "react-markdown";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { materialDark } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import Image from "next/image";
-export const AssistantMessage = ({
+import React from "react";
+
+export const AssistantMessage = React.memo(({
   content,
   initialContent,
 }: {
@@ -111,7 +113,7 @@ export const AssistantMessage = ({
       </ReactMarkdown>
     </div>
   </div>
-);
+));
 
 export const UserMessage = ({ content }: { content: string }) => (
   <div className="flex justify-end">
