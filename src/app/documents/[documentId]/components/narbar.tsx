@@ -1,6 +1,5 @@
 "use client";
 
-import { DocumentInput } from "./document-input";
 import { useEditorStore } from "@/store/use-editor-store";
 import { OrganizationSwitcher, UserButton } from "@clerk/nextjs";
 import { useRouter } from "next/navigation";
@@ -13,17 +12,29 @@ import Image from "next/image";
 import Link from "next/link";
 import { Inbox } from "./inbox";
 import { Avatars } from "./avatars";
+import { useCallback } from "react";
+import dynamic from 'next/dynamic';
+import { Skeleton } from "@/components/ui/skeleton";
+import React from "react";
 
 interface NavbarProps {
   data: Doc<"documents">;
 }
 
-export const Navbar = ({ data }: NavbarProps) => {
+const DocumentInputAsync = dynamic(
+  () => import('./document-input').then((mod) => mod.DocumentInput),
+  {
+    ssr: false,
+    loading: () => <Skeleton className="h-7 w-36 rounded-md" />
+  }
+);
+
+export const Navbar = React.memo(({ data }: NavbarProps) => {
   const router = useRouter();
   const { editor } = useEditorStore();
   const mutation = useMutation(api.documents.create);
 
-  const onNewDocument = () => {
+  const onNewDocument = useCallback(() => {
     mutation({
       title: "Untitled document",
       initialContent: "",
@@ -35,11 +46,13 @@ export const Navbar = ({ data }: NavbarProps) => {
         toast.success("Document created");
         router.push(`/documents/${id}`);
       });
-  };
+  }, [mutation, router]);
 
-  const insertTable = (rows: number, cols: number) => {
+  const insertTable = useCallback((rows: number, cols: number) => {
     editor?.chain().focus().insertTable({ rows, cols }).run();
-  };
+  }, [editor]);
+
+  Navbar.displayName = "Navbar";
 
   return (
     <div className="relative">
@@ -50,7 +63,7 @@ export const Navbar = ({ data }: NavbarProps) => {
           </Link>
         </div>
         <div className="flex items-center gap-2 h-10 ml-2">
-          <DocumentInput title={data.title} id={data._id} />
+          <DocumentInputAsync title={data.title} id={data._id} />
         </div>
         <div className="ml-auto flex items-center gap-3 mr-4">
          <Avatars />
@@ -74,4 +87,4 @@ export const Navbar = ({ data }: NavbarProps) => {
       </div>
     </div>
   );
-};
+});

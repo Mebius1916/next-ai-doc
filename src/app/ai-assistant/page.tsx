@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import Image from "next/image";
 import { ChatInput } from "./components/chatInput";
 import { useAutoScroll } from "@/hooks/useAutoScroll";
@@ -70,11 +70,12 @@ def quick_sort(arr):
   }, [messages, scrollToBottom]); // 添加 scrollToBottom 作为依赖
 
   // 发送消息处理函数
-  const handleSend = async (message?: { role: string; content: string }) => {
+  const handleSend = useCallback(async (message?: { role: string; content: string }) => {
     // 准备消息内容
     const userMessage = message || { role: "user", content: input };
     if (!userMessage.content.trim()) return;
     if (isFetching) return;
+    
     // 更新消息列表
     setMessages((prev) => {
       if (prev.some((m) => m.content === userMessage.content)) return prev;
@@ -87,7 +88,7 @@ def quick_sort(arr):
     setCanScroll(true);
 
     try {
-      // 发送聊天请求到API
+      // 发送聊天请求到API（注意使用最新的 messages 状态）
       const response = await fetch("/api/chat", {
         method: "POST",
         headers: {
@@ -143,7 +144,7 @@ def quick_sort(arr):
     } finally {
       setIsFetching(false);
     }
-  };
+  }, [input, isFetching, messages, setCanScroll]); 
 
   // 初始查询处理（组件加载时自动发送查询）
   useEffect(() => {

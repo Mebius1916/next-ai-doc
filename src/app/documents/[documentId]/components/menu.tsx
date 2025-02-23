@@ -30,6 +30,7 @@ import {
 } from "lucide-react";
 import { Doc } from "../../../../../convex/_generated/dataModel";
 import { Editor } from "@tiptap/core";
+import React from "react";
 
 interface EditorMenuProps {
   data: Doc<"documents">;
@@ -38,7 +39,7 @@ interface EditorMenuProps {
   insertTable: (rows: number, cols: number) => void;
 }
 
-export const EditorMenu = ({
+export const EditorMenu = React.memo(({
   data,
   editor,
   onNewDocument,
@@ -202,4 +203,4 @@ export const EditorMenu = ({
       </MenubarMenu>
     </Menubar>
   );
-};
+});

@@ -1,4 +1,4 @@
-import { FaCaretDown } from "react-icons/fa";
+import { ChevronDown } from "lucide-react";
 
 interface MarkerProps {
   position: number;
@@ -7,7 +7,6 @@ interface MarkerProps {
   onMouseDown: (e: React.MouseEvent<HTMLDivElement>) => void;
   onDoubleClick: (e: React.MouseEvent<HTMLDivElement>) => void;
 }
-
 export const Marker = ({
   position,
   isLeft,
@@ -22,7 +21,7 @@ export const Marker = ({
       onMouseDown={onMouseDown}
       onDoubleClick={onDoubleClick}
     >
-      <FaCaretDown className="absolute left-1/2 top-0 h-full fill-[#5732E3] transform -translate-x-1/2" />
+      <ChevronDown className="absolute left-1/2 top-0 h-full transform -translate-x-1/2" color="#5732E3"/>
       <div
         className="absolute left-1/2 top-4 transform -translate-x-1/2"
         style={{

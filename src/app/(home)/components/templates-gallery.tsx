@@ -12,6 +12,7 @@ import { useMutation } from "convex/react";
 import { useState } from "react";
 import { toast } from "sonner";
 import { api } from "../../../../convex/_generated/api";
+
 export const TemplateGallery = () => {
   const create = useMutation(api.documents.create); //在数据库中创建文档
   const [isCreating, setIsCreating] = useState(false);

@@ -1,12 +1,10 @@
 "use client";
 // 导入必要的组件和类型
 import { TableCell, TableRow } from "@/components/ui/table";
-import { SiGoogledocs } from "react-icons/si";
-import { Building2Icon, CircleUserIcon } from "lucide-react";
+import { Building2Icon, CircleUserIcon,FileText } from "lucide-react";
 import { format } from "date-fns";
 import { DocumentMenu } from "./document-menu";
 import { Doc } from "../../../../convex/_generated/dataModel";
-
 // 定义组件的 Props 接口
 interface DocumentRowProps {
   document: Doc<"documents">;
@@ -22,10 +20,12 @@ export const DocumentRow = ({ document }: DocumentRowProps) => {
     window.open(`/documents/${id}`, "_blank");
   };
   return (
-    <TableRow className="cursor-pointer" onClick={() => onRowClick(document._id)}>
+    <TableRow
+      className="cursor-pointer"
+      onClick={() => onRowClick(document._id)}
+    >
       <TableCell className="w-[50px]">
-
-        <SiGoogledocs className="size-6 fill-[#9D55F9]" />
+        <FileText className="size-6 fill-[#9D55F9]" />
       </TableCell>
       <TableCell className="font-medium md:w-[45%]">{document.title}</TableCell>
       <TableCell className="text-muted-foreground hidden md:flex items-center gap-2">

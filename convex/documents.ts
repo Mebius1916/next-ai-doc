@@ -1,6 +1,7 @@
 import { v, ConvexError } from "convex/values";
 import { mutation, query } from "./_generated/server";
 import { paginationOptsValidator } from "convex/server";
+import { Id } from "./_generated/dataModel";
 
 // 创建新文档
 export const create = mutation({
@@ -170,7 +171,7 @@ export const getById = query({
 export const getByIds = query({
   args: { ids: v.array(v.id("documents")) },
   handler: async (ctx, { ids }) => {
-    const documents = [];
+    const documents: { id: Id<"documents">; name: string }[] = [];
 
     for (const id of ids) {
       const document = await ctx.db.get(id);

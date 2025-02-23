@@ -115,10 +115,10 @@ export const AssistantMessage = React.memo(({
   </div>
 ));
 
-export const UserMessage = ({ content }: { content: string }) => (
+export const UserMessage = React.memo(({ content }: { content: string }) => (
   <div className="flex justify-end">
     <div className="bg-blue-500 text-white px-4 py-3 rounded-lg shadow-md max-w-[calc(100%-3rem)]">
       {content}
     </div>
   </div>
-);
+));

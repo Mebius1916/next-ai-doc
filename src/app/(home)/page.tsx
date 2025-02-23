@@ -1,5 +1,5 @@
 "use client";
-import React, { useCallback, useState } from "react";
+import React, {  useState } from "react";
 import Navbar from "./components/narbar";
 import SearchInput from "./components/search-input";
 import { TemplateGallery } from "./components/templates-gallery";

@@ -28,11 +28,12 @@ import { useStorage } from "@liveblocks/react";
 import { LEFT_MARGIN_DEFAULT, RIGHT_MARGIN_DEFAULT } from "@/lib/margin";
 import { useDebounce } from "@/hooks/use-debounce";
 import { Threads } from "./threads";
+import React from "react";
 
 interface EditorProps {
   initialContent?: string | undefined;
 }
-export const Editor = ({ initialContent }: EditorProps) => {
+export const Editor = React.memo(({ initialContent }: EditorProps) => {
   //从room组件中设置的initialStorage里拿值
   const leftMargin = useStorage(
     (root: { leftMargin?: number }) => root.leftMargin ?? LEFT_MARGIN_DEFAULT
@@ -41,10 +42,12 @@ export const Editor = ({ initialContent }: EditorProps) => {
   const rightMargin = useStorage(
     (root: { rightMargin?: number }) => root.rightMargin ?? RIGHT_MARGIN_DEFAULT
   );
+
   const liveblocks = useLiveblocksExtension({
     initialContent,
     offlineSupport_experimental: true, //离线支持
   });
+
   const { setEditor } = useEditorStore();
 
   // 在组件顶层定义防抖函数
@@ -133,4 +136,4 @@ export const Editor = ({ initialContent }: EditorProps) => {
       </div>
     </div>
   );
-};
+});
