@@ -204,3 +204,5 @@ export const EditorMenu = React.memo(({
     </Menubar>
   );
 });
+
+EditorMenu.displayName = 'EditorMenu';

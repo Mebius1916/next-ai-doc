@@ -205,3 +205,5 @@ export const Document = React.memo(
     );
   }
 );
+
+Document.displayName = 'Document';

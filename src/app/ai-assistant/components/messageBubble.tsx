@@ -115,6 +115,9 @@ export const AssistantMessage = React.memo(({
   </div>
 ));
 
+// 添加显示名称
+AssistantMessage.displayName = 'AssistantMessage';
+
 export const UserMessage = React.memo(({ content }: { content: string }) => (
   <div className="flex justify-end">
     <div className="bg-blue-500 text-white px-4 py-3 rounded-lg shadow-md max-w-[calc(100%-3rem)]">
@@ -122,3 +125,6 @@ export const UserMessage = React.memo(({ content }: { content: string }) => (
     </div>
   </div>
 ));
+
+// 添加显示名称
+UserMessage.displayName = 'UserMessage';

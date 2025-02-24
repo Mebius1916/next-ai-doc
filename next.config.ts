@@ -100,9 +100,28 @@ const nextConfig: NextConfig = {
       );
     }
 
+    // 配置 babel-loader 的缓存目录
+    const babelLoader = config.module.rules.find(rule => 
+      rule.loader && rule.loader.includes('babel-loader')
+    );
+
+    if (babelLoader) {
+      babelLoader.options = {
+        ...babelLoader.options,
+        cacheDirectory: true, // 启用 babel-loader 的缓存
+      };
+    }
+
+    // 启用 Webpack 5 的持久化缓存
+    config.cache = {
+      type: 'filesystem', // 使用文件系统缓存
+      buildDependencies: {
+        config: [__filename], // 依赖于当前配置文件
+      },
+    };
+
     return config; // 返回修改后的 Webpack 配置
   },
 };
 
-// 导出最终的 Next.js 配置，结合了多种优化策略
 module.exports = withBundleAnalyzer(nextConfig);

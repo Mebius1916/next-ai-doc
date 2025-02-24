@@ -8,7 +8,7 @@ interface ChatMessagesProps {
   initialContent?: string;
 }
 
-export const ChatMessages =React.memo(({ messages, messagesEndRef,initialContent }: ChatMessagesProps) => {
+const ChatMessages = React.memo(({ messages, messagesEndRef, initialContent }: ChatMessagesProps) => {
   return (
     <div className="flex-1 overflow-y-auto mt-4 mb-4 space-y-4 scroll-custom mx-4">
       {messages.map((msg, index) => (
@@ -24,3 +24,7 @@ export const ChatMessages =React.memo(({ messages, messagesEndRef,initialContent
     </div>
   );
 });
+
+ChatMessages.displayName = 'ChatMessages';
+
+export default ChatMessages;

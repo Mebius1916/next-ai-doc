@@ -137,3 +137,5 @@ export const Editor = React.memo(({ initialContent }: EditorProps) => {
     </div>
   );
 });
+
+Editor.displayName = 'Editor';
