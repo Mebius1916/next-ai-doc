@@ -9,6 +9,7 @@ import { usePaginatedQuery } from "convex/react";
 import { api } from "../../../convex/_generated/api";
 import dynamic from "next/dynamic";
 import { FullscreenLoader } from "@/components/fullscreen-loader";
+import Image from "next/image";
 const AiChat = dynamic(() => import("./components/aiChat"), {
   loading: () => <FullscreenLoader label="AI Assistant Loading..."/>, // 加载时显示的内容
   ssr: false, // 关闭服务器端渲染
@@ -30,16 +31,18 @@ const Page = () => {
   };
 
   return (
-    <div
-      className="min-h-screen flex flex-col"
-      style={{
-        backgroundImage: "url('/bg.png')",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        minHeight: "100vh",
-      }}
-    >
+    <div className="min-h-screen flex flex-col relative">
+      <div className="fixed inset-0 -z-10">
+        <Image
+          src="/bg.png"
+          alt="Background"
+          fill
+          priority
+          quality={75}
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+      </div>
       <div className="fixed top-0 left-0 right-0 z-10 h-16">
         <Navbar />
       </div>

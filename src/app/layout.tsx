@@ -13,7 +13,7 @@ const inter =Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Next AI Doc",
+  title: "Documind",
   description: "AI-Powered Collaborative Docs",
 };
 
